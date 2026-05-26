@@ -1,68 +1,39 @@
 # Roadmap
 
-## Current Status: Document Extraction Toolkit (v1.0)
+## Current Scope
 
-**What's implemented:**
-- ✅ Robust .docx text extraction (with dynamic TOC + hyperlink support)
-- ✅ Intelligent document shredding
-- ✅ Reusable toolkit for building contract analysis pipelines
+The repository contains one deterministic DOCX preprocessing tool:
 
-**What's NOT in v1.0 (future phases):**
-- 🚧 LLM integration for clause extraction (Phase B)
-- 🚧 Risk auditing framework (Phase C)
-- 🚧 Excel report generation
+- ordered extraction of document-body paragraphs;
+- recovery of dynamic TOC and hyperlink text;
+- extraction of table-row content;
+- paragraph-aligned, lossless shredding with source-text offsets;
+- standard-library unit tests with fictional fixture data.
 
-## Short Term (1 Month)
+It does not contain an audit agent, LLM integration or Excel reporting.
 
-### Phase B: Clause Extraction Framework
-- Define and implement stateful clause extraction
-- Add example implementations for different LLMs (Claude, GPT-4, Llama)
-- Include memory management across shreds
+## Next Improvements
 
-### Phase C: Risk Auditing Framework
-- Define contractual risk exposure model
-- Build audit logic across extracted clauses
-- Generate structured output (JSON/Excel)
+- Add fictional fixtures covering more Word XML variants.
+- Support optional header and footer extraction.
+- Expose structured paragraph/table records in addition to marked text.
+- Validate behavior locally on non-published sample documents.
+- Add packaging metadata for installation as a Python library.
 
-## Medium Term (6 Months)
+## Separate Application Work
 
-### PDF Support
-- Direct parsing of PDF-format contracts
-- Don't rely on Word as intermediate format
-- Option for OCR on scanned PDFs
+The following belong in an agent repository that depends on this tool, rather
+than in this extraction library:
 
-### Multi-Language Support
-- Handle contracts in French, Spanish, German, etc.
-- Preserve language detection metadata
+- human validation of a table of contents;
+- tool-calling workflows for clause reconstruction;
+- source anchoring checks for LLM-extracted clauses;
+- definition interpretation and LoA analysis;
+- spreadsheet reporting and review-state persistence.
 
-### Template Comparison
-- Load reference contract templates
-- Auto-detect deviations from standard clauses
-- Generate redlines automatically
+## Known Limits
 
-## Future Considerations
-
-- Integration with legal databases (LexisNexis, Bloomberg Law)
-- Automated redline generation in track-changes format (.docx)
-- Bulk contract processing pipeline
-- API interface for third-party integration
-- Web UI for non-technical users
-- Jurisdiction-specific legal benchmarking
-- Comment and tracked-changes extraction
-
-## Known Limitations
-
-Current version:
-- English-language contracts only (extensible)
-- Tested on EPC and industrial contracts; other types untested
-- Hyperlinks must be properly formed (can't infer missing links)
-- Very large contracts (500+ pages) may need splitting manually
-- Word documents only (PDF support planned)
-
-## Contributing
-
-Have an idea? Open an issue or pull request. Priority goes to improvements that:
-1. Extend extraction robustness (edge cases in .docx parsing)
-2. Add reusable building blocks for contract analysis
-3. Maintain code quality and testability
-4. Don't require expensive external dependencies
+- Word `.docx` document body only.
+- No PDF or OCR support.
+- No semantic clause or index detection.
+- No treatment of tracked-change meaning beyond visible XML text traversal.
