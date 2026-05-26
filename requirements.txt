@@ -1,0 +1,12 @@
+# Contract Risk Agent v1.0 - Document Extraction Toolkit
+#
+# No external dependencies required!
+# The toolkit uses only Python standard library:
+# - zipfile (extract .docx)
+# - xml.etree (parse WordprocessingML)
+# - pathlib (file handling)
+#
+# For extended functionality (future phases), you'll need:
+# - openai (for Claude, GPT-4 integration)
+# - pydantic (for structured data validation)
+# - openpyxl (for Excel report generation)
