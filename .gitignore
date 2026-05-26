@@ -97,6 +97,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
 .venv
 env/
 venv/
@@ -133,10 +134,13 @@ dmypy.json
 .DS_Store
 Thumbs.db
 
-# Project-specific
+# Confidential documents and generated review artifacts
 runs/
 output/
-*.xlsx
+local_documents/
+private_fixtures/
 *.docx
-!example_contracts/
-.env.local
+*.pdf
+*.xlsx
+*.xlsm
+*.jsonl
